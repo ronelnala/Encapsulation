@@ -1,0 +1,37 @@
+class Car:
+    def __init__(self, make, model, fuel_level=100):
+        self.make = make
+        self.model = model
+        self.__fuel_level = fuel_level  
+        self.__speed = 0 
+
+    def start(self):
+        if self.__fuel_level > 0:
+            print(f"{self.make} {self.model} is now started.")
+        else:
+            print("Not enough fuel to start the car.")
+
+    def accelerate(self, increment):
+        if self.__fuel_level > 0:
+            self.__speed += increment
+            self.__fuel_level -= increment * 0.1  
+            print(f"Accelerated. Current speed: {self.__speed} km/h, Fuel level: {self.__fuel_level}%")
+        else:
+            print("Cannot accelerate, not enough fuel.")
+
+    def brake(self):
+        if self.__speed > 0:
+            self.__speed -= 
+            print(f"Braked. Current speed: {self.__speed} km/h")
+        else:
+            print("The car is already stopped.")
+
+    def get_fuel_level(self):
+        return self.__fuel_level
+
+
+car = Car("Nissan", "Gtr")
+car.start()
+car.accelerate(20)
+car.brake()
+print(f"Fuel level: {car.get_fuel_level()}%")
